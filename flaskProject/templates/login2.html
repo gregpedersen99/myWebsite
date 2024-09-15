@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #012A36 0%, #29274C 100%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 400px; /* Restrict maximum width of container */
+            min-height: 300px; /* Ensure enough height for content */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Stack text box and buttons vertically */
+            gap: 10px; /* Space between elements */
+            flex-grow: 1; /* Allow form to expand to fill container */
+            align-items: center; /* Center align text box */
+        }
+
+        /* Specific styling for text boxes */
+        form input[type="text"] {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #7E52A0;
+            border-radius: 8px;
+            width: 100%; /* Make text boxes take full width */
+            max-width: 300px; /* Restrict maximum width */
+        }
+
+        /* Specific styling for labels */
+        form label {
+            font-size: 16px;
+            color: #012A36;
+            margin-bottom: 5px; /* Space below the label */
+        }
+
+        /* Styling for buttons specifically */
+        .button-wrapper {
+            display: flex;
+            gap: 10px; /* Space between buttons */
+            margin-top: 20px; /* Space above button wrapper */
+        }
+
+        .button-wrapper button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #7E52A0;
+            color: #FFF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-wrapper button:hover {
+            background-color: #946BB3;
+        }
+
+        .button-wrapper button:focus {
+            outline: 3px solid #D295BF;
+            outline-offset: 2px;
+        }
+
+        .button-wrapper button:active {
+            background-color: #6A3F80;
+            transform: translateY(2px);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #29274C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/737/small_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" width="64" height="64" alt="User Icon">
+        <form method="post">
+            <!-- Text Box for User Input -->
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" placeholder="Enter your password" required>
+
+            <!-- Buttons -->
+            <div class="button-wrapper">
+                <button type="submit" name="action" value="generate_text_1">Back</button>
+                <button type="submit" name="action" value="generate_text_2">Submit</button>
+            </div>
+        </form>
+        <p>{{ output }}</p>
+    </div>
+</body>
+</html>
