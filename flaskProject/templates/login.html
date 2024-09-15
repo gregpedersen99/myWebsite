@@ -4,7 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css"> <!-- Link to external CSS -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0; /* Ensure there is no margin */
+            font-family: Arial, sans-serif; /* Optional: Improve font readability */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #29274C;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Light background for better contrast */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center; /* Center align text and buttons */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: black;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 0 0 20px; /* Add space below header */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Add space between buttons */
+        }
+
+        button {
+            margin: 0; /* Remove default margin */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #7E52A0; /* Primary button color */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #946BB3; /* Darker button color on hover */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
