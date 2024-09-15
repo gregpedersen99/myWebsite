@@ -7,61 +7,77 @@
     <style>
         html, body {
             height: 100%;
-            margin: 0; /* Ensure there is no margin */
-            font-family: Arial, sans-serif; /* Optional: Improve font readability */
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
         }
 
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #29274C;
+            background: linear-gradient(135deg, #012A36 0%, #29274C 100%);
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.9); /* Light background for better contrast */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            text-align: center; /* Center align text and buttons */
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         h1 {
-            font-size: 24px;
-            color: black;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
+            font-size: 28px;
+            color: #012A36;
+            background-color: #E6BCCD;
+            padding: 15px;
+            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin: 0 0 20px; /* Add space below header */
+            margin: 0 0 20px;
+            font-weight: bold;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Add space between buttons */
+            gap: 15px;
         }
 
         button {
-            margin: 0; /* Remove default margin */
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 24px;
+            font-size: 18px;
             border: none;
-            border-radius: 5px;
-            background-color: #7E52A0; /* Primary button color */
-            color: white;
+            border-radius: 8px;
+            background-color: #7E52A0;
+            color: #FFF;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: #946BB3; /* Darker button color on hover */
+            background-color: #946BB3;
+        }
+
+        button:focus {
+            outline: 3px solid #D295BF;
+            outline-offset: 2px;
+        }
+
+        button:active {
+            background-color: #6A3F80;
+            transform: translateY(2px);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #29274C;
         }
     </style>
 </head>
