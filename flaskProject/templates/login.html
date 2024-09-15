@@ -1,58 +1,19 @@
-<!--This is for our button html templates that we will put into our web app-->
-
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        html, body{
-            height: 100%
-
-        }
-
-         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #29274C;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        h1 {
-
-            font-size: 24px;
-            color: black;
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: inline-block;
-
-
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        button {
-            margin: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to external CSS -->
 </head>
 <body>
-    <h1>Are you Gregory Pedersen?</h1>>
-    <form method="post">
-        <button type="submit" name="action" value="generate_text_1">Yes</button>
-        <button type="submit" name="action" value="generate_text_2">No</button>
-
-    </form>
-    <p>{{ output }}</p>
-
+    <div class="container">
+        <h1>Are you Gregory Pedersen?</h1>
+        <form method="post">
+            <button type="submit" name="action" value="generate_text_1">Yes</button>
+            <button type="submit" name="action" value="generate_text_2">No</button>
+        </form>
+        <p>{{ output }}</p>
+    </div>
 </body>
 </html>
