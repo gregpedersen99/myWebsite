@@ -18,3 +18,11 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     # Run the application on all network interfaces at the specified port
     app.run(host='0.0.0.0', port=port, debug=True)
+
+
+  #Lmao the background photo is so shit but whatever Im going to change that next
+  #Tod do List:
+    #Format and add a good background photo
+    #Change button formats 
+    #Add password and username option for a Gregory Pederen = 'Yes' submission 
+    
