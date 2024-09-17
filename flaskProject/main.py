@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for
+import os
+
 
 app = Flask(__name__)
 
@@ -23,9 +25,6 @@ def login_page():
         elif action == 'generate_text_2':  # "Submit" button on the second page
             return redirect(url_for('index'))  # Adjust to show different message or behavior if needed
     return render_template('login2.html')
-
-
-
 
 
 if __name__ == '__main__':
