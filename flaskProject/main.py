@@ -1,5 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
-import os
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -7,15 +6,24 @@ app = Flask(__name__)
 def index():
     output = ''
     if request.method == 'POST':
-        if request.form['action'] == 'generate_text_1':
+        action = request.form['action']
+        if action == 'generate_text_1':  # "Back" button on the second page
             return redirect(url_for('login_page'))
-        elif request.form['action'] == 'generate_text_2':
+        elif action == 'generate_text_2':  # "Submit" button on the first page
             output = 'You are not Gregory, go away!'
+            return render_template('login.html', output=output)
     return render_template('login.html', output=output)
 
-@app.route('/login_page')
+@app.route('/login_page', methods=['GET', 'POST'])
 def login_page():
+    if request.method == 'POST':
+        action = request.form['action']
+        if action == 'generate_text_1':  # "Back" button on the second page
+            return redirect(url_for('index'))
+        elif action == 'generate_text_2':  # "Submit" button on the second page
+            return redirect(url_for('index'))  # Adjust to show different message or behavior if needed
     return render_template('login2.html')
+
 
 
 
