@@ -13,12 +13,24 @@
         }
 
         body {
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #012A36 0%, #29274C 100%);
             background-size: cover;
             background-position: center;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .container {
@@ -30,26 +42,66 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            min-height: 300px;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header img {
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
         }
 
         h1 {
             font-size: 28px;
             color: #012A36;
-            background-color: #E6BCCD;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: none; /* Remove background color */
+            padding: 0; /* Adjust padding to match design */
             margin: 0 0 20px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
         }
 
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            flex-grow: 1;
+            align-items: center;
         }
 
-        button {
+        form input[type="text"] {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #7E52A0;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        form label {
+            font-size: 16px;
+            color: #012A36;
+            margin-bottom: 5px;
+        }
+
+        .button-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-wrapper button {
             padding: 12px 24px;
             font-size: 18px;
             border: none;
@@ -58,18 +110,19 @@
             color: #FFF;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        button:hover {
+        .button-wrapper button:hover {
             background-color: #946BB3;
         }
 
-        button:focus {
+        .button-wrapper button:focus {
             outline: 3px solid #D295BF;
             outline-offset: 2px;
         }
 
-        button:active {
+        .button-wrapper button:active {
             background-color: #6A3F80;
             transform: translateY(2px);
         }
@@ -83,12 +136,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Are you Gregory Pedersen?</h1>
+        <div class="header">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/737/small_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" width="64" height="64" alt="User Icon">
+            <h1>Are you Gregory Pedersen?</h1>
+        </div>
         <form method="post">
-            <button type="submit" name="action" value="generate_text_1">Yes</button>
-            <button type="submit" name="action" value="generate_text_2">No</button>
+            <div class="button-wrapper">
+                <button type="submit" name="action" value="generate_text_1">Yes</button>
+                <button type="submit" name="action" value="generate_text_2">No</button>
+            </div>
         </form>
-        <p>{{ output }}</p>
-    </div>
-</body>
-</html>
+       
