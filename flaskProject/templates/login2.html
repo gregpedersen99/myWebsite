@@ -13,12 +13,24 @@
         }
 
         body {
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #012A36 0%, #29274C 100%);
             background-size: cover;
             background-position: center;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .container {
@@ -32,40 +44,37 @@
             align-items: center;
             position: relative;
             width: 100%;
-            max-width: 400px; /* Restrict maximum width of container */
-            min-height: 300px; /* Ensure enough height for content */
+            max-width: 400px;
+            min-height: 300px;
         }
 
         form {
             display: flex;
-            flex-direction: column; /* Stack text box and buttons vertically */
-            gap: 10px; /* Space between elements */
-            flex-grow: 1; /* Allow form to expand to fill container */
-            align-items: center; /* Center align text box */
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+            align-items: center;
         }
 
-        /* Specific styling for text boxes */
         form input[type="text"] {
             padding: 8px 12px;
             font-size: 16px;
             border: 1px solid #7E52A0;
             border-radius: 8px;
-            width: 100%; /* Make text boxes take full width */
-            max-width: 300px; /* Restrict maximum width */
+            width: 100%;
+            max-width: 300px;
         }
 
-        /* Specific styling for labels */
         form label {
             font-size: 16px;
             color: #012A36;
-            margin-bottom: 5px; /* Space below the label */
+            margin-bottom: 5px;
         }
 
-        /* Styling for buttons specifically */
         .button-wrapper {
             display: flex;
-            gap: 10px; /* Space between buttons */
-            margin-top: 20px; /* Space above button wrapper */
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .button-wrapper button {
@@ -102,15 +111,13 @@
 </head>
 <body>
     <div class="container">
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/737/small_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" width="64" height="64" alt="User Icon">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/737/small_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" width="64" height="64" alt="User Icon">
         <form method="post">
-            <!-- Text Box for User Input -->
             <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
             <label for="password">Password</label>
             <input type="text" id="password" name="password" placeholder="Enter your password" required>
 
-            <!-- Buttons -->
             <div class="button-wrapper">
                 <button type="submit" name="action" value="generate_text_1">Back</button>
                 <button type="submit" name="action" value="generate_text_2">Submit</button>
