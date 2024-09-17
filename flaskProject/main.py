@@ -8,22 +8,21 @@ app = Flask(__name__)
 def index():
     output = ''
     if request.method == 'POST':
-        action = request.form['action']
+        action = request.form.get('action')
         if action == 'generate_text_1':  # "Back" button on the second page
             return redirect(url_for('login_page'))
         elif action == 'generate_text_2':  # "Submit" button on the first page
             output = 'You are not Gregory, go away!'
-            return render_template('login.html', output=output)
     return render_template('login.html', output=output)
 
 @app.route('/login_page', methods=['GET', 'POST'])
 def login_page():
     if request.method == 'POST':
-        action = request.form['action']
+        action = request.form.get('action')
         if action == 'generate_text_1':  # "Back" button on the second page
             return redirect(url_for('index'))
         elif action == 'generate_text_2':  # "Submit" button on the second page
-            return redirect(url_for('index'))  # Adjust to show different message or behavior if needed
+            return redirect(url_for('index'))  # Redirects to the index page
     return render_template('login2.html')
 
 
