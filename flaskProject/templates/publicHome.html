@@ -3,24 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Gregory Pedersen</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        html, body {
+            height: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             color: #333;
         }
-        h1 {
-            font-size: 2rem;
+
+        .container {
+            display: flex;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
         }
+
+        .left-side {
+            flex: 1; /* Take up half of the container */
+            background-color: #D295BF; /* Soft pink color */
+        }
+
+        .right-side {
+            flex: 1; /* Take up the other half */
+            background-color: #29274C; /* Dark blue color */
+            color: #FFF; /* White text color for contrast */
+            padding: 40px; /* Padding for better spacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content */
+            justify-content: center; /* Center align content vertically */
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D295BF; /* Soft pink underline */
+        }
+
+        h2 {
+            font-size: 12px;
+            margin: 0;
+            padding-bottom: 20px;
+            color: #D295BF; /* Soft pink color for subheading */
+        }
+
+        .subheading {
+            font-size: 20px;
+            color: #FFF;
+            text-align: center;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .subheading::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: #D295BF; /* Soft pink color */
+        }
+
+        .subheading a {
+            text-decoration: none;
+            color: #FFF;
+            transition: color 0.3s;
+        }
+
+        .subheading a:hover {
+            color: #D295BF; /* Change color on hover */
+        }
+
     </style>
 </head>
 <body>
-    <h1>Welcome</h1>
+    <div class="container">
+        <div class="left-side">
+            <!-- Left side content -->
+        </div>
+        <div class="right-side">
+            <h1>Gregory Pedersen</h1>
+            <h2>Solutions Architect at Dell Technologies</h2>
+            <div class="subheading"><a href="#">Email Inquiry</a></div>
+            <div class="subheading"><a href="#">Social Media</a></div>
+            <div class="subheading"><a href="#">Sample Work</a></div>
+            <div class="subheading"><a href="#">Digital Resume</a></div>
+            <div class="subheading"><a href="#">Online Portfolio</a></div>
+        </div>
+    </div>
 </body>
 </html>
