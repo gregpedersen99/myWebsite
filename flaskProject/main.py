@@ -16,8 +16,7 @@ def index():
         if action == 'generate_text_1':  # "Back" button on the second page
             return redirect(url_for('login_page'))
         elif action == 'generate_text_2':  # "Submit" button on the first page
-            output = 'You are not Gregory, go away!'
-            return render_template('login.html', output=output)
+            return redirect(url_for('publicHome'))
     return render_template('login.html', output=output)
 
 @app.route('/login_page', methods=['GET', 'POST'])
@@ -26,15 +25,19 @@ def login_page():
         username = request.form.get('username')
         password = request.form.get('password')
         if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
-            return redirect(url_for('home'))
+            return redirect(url_for('myHome'))
         else:
             # Handle incorrect credentials (e.g., show an error message)
             return render_template('login2.html', error="Invalid username or password.")
     return render_template('login2.html')
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/myHome')
+def myHome():
+    return render_template('myHome.html')
+
+@app.route('/publicHome')
+def publicHome():
+    return render_template('publicHome.html')
 
 if __name__ == '__main__':
     # Get the port from the environment variable, default to 5000 if not set
