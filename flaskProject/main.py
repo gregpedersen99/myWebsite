@@ -4,6 +4,10 @@ import os
 
 app = Flask(__name__)
 
+# Access the environment variables set on Heroku
+CORRECT_USERNAME = os.getenv('USERNAME')
+CORRECT_PASSWORD = os.getenv('PASSWORD')
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     output = ''
@@ -13,18 +17,24 @@ def index():
             return redirect(url_for('login_page'))
         elif action == 'generate_text_2':  # "Submit" button on the first page
             output = 'You are not Gregory, go away!'
+            return render_template('login.html', output=output)
     return render_template('login.html', output=output)
 
 @app.route('/login_page', methods=['GET', 'POST'])
 def login_page():
     if request.method == 'POST':
-        action = request.form.get('action')
-        if action == 'generate_text_1':  # "Back" button on the second page
-            return redirect(url_for('index'))
-        elif action == 'generate_text_2':  # "Submit" button on the second page
-            return redirect(url_for('index'))  # Redirects to the index page
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
+            return redirect(url_for('home'))
+        else:
+            # Handle incorrect credentials (e.g., show an error message)
+            return render_template('login2.html', error="Invalid username or password.")
     return render_template('login2.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 if __name__ == '__main__':
     # Get the port from the environment variable, default to 5000 if not set
