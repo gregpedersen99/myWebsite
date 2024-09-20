@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        .left-side {
+            flex: 1; /* Take up half of the container */
+            background-color: #D295BF; /* Soft pink color */
+            position: relative; /* For positioning the square */
+        }
+
+        .rotated-square {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 30vw; /* Size of the square relative to viewport width */
+            height: 30vw; /* Size of the square relative to viewport width */
+            max-width: 300px; /* Maximum width */
+            max-height: 300px; /* Maximum height */
+            background-color: #7E52A0; /* Different color */
+            transform: translate(-50%, -50%) rotate(30deg); /* Center and rotate */
+        }
+
+        .right-side {
+            flex: 1; /* Take up the other half */
+            background-color: #29274C; /* Dark blue color */
+            color: #FFF; /* White text color for contrast */
+            padding: 40px; /* Padding for better spacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content */
+            justify-content: center; /* Center align content vertically */
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D295BF; /* Soft pink underline */
+        }
+
+        .journal-entry {
+            margin-top: 20px;
+            background: #FFF; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            color: #333;
+        }
+
+        .journal-entry label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .journal-entry textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .journal-entry button {
+            padding: 10px 15px;
+            background-color: #7E52A0; /* Button color */
+            color: #FFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .journal-entry button:hover {
+            background-color: #D295BF; /* Button hover color */
+        }
+
+        .previous-entries {
+            margin-top: 20px;
+            background: #FFF; /* White background for the entries */
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            color: #333;
+            max-height: 200px; /* Limit height */
+            overflow-y: auto; /* Scroll if too long */
+        }
+
+        .entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .entry:last-child {
+            border-bottom: none; /* Remove border from last entry */
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Adjust logo size as needed */
+        }
+
+        .date-search {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="rotated-square"></div> <!-- Rotated square -->
+        </div>
+        <div class="right-side">
+            <img src="https://via.placeholder.com/100" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <h1>Journal Entry</h1>
+            <div class="journal-entry">
+                <h2>New Entry</h2>
+                <form id="entryForm">
+                    <label for="entry-content">Your Journal Entry:</label>
+                    <textarea id="entry-content" rows="3" placeholder="Write your thoughts here..." required></textarea>
+
+                    <button type="submit">Save Entry</button>
+                </form>
+            </div>
+            <div class="previous-entries">
+                <h2>Previous Entries</h2>
+                <div class="date-search">
+                    <label for="search-date">Search by Date:</label>
+                    <input type="date" id="search-date">
+                    <button id="search-button">Search</button>
+                </div>
+                <div id="entriesList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const entryForm = document.getElementById('entryForm');
+        const entriesList = document.getElementById('entriesList');
+        const searchButton = document.getElementById('search-button');
+        const searchDateInput = document.getElementById('search-date');
+
+        let entries = []; // Store entries in an array
+
+        entryForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            const date = new Date().toLocaleDateString(); // Get current date
+            const content = document.getElementById('entry-content').value;
+
+            // Create a new entry object
+            const entry = { date, content };
+            entries.push(entry); // Add to entries array
+
+            // Append the new entry to the list
+            addEntryToList(entry);
+
+            // Clear the form
+            entryForm.reset();
+        });
+
+        searchButton.addEventListener('click', function() {
+            const searchDate = searchDateInput.value;
+            // Clear the current list
+            entriesList.innerHTML = '';
+
+            // Filter and display entries matching the search date
+            entries.forEach(entry => {
+                if (entry.date === searchDate) {
+                    addEntryToList(entry);
+                }
+            });
+        });
+
+        function addEntryToList(entry) {
+            const entryDiv = document.createElement('div');
+            entryDiv.classList.add('entry');
+            entryDiv.innerHTML = `<strong>${entry.date}</strong><p>${entry.content}</p>`;
+            entriesList.appendChild(entryDiv);
+        }
+    </script>
+</body>
+</html>
