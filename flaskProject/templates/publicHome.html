@@ -21,6 +21,19 @@
         .left-side {
             flex: 1; /* Take up half of the container */
             background-color: #D295BF; /* Soft pink color */
+            position: relative; /* For positioning the square */
+        }
+
+        .rotated-square {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 30vw; /* Size of the square relative to viewport width */
+            height: 30vw; /* Size of the square relative to viewport width */
+            max-width: 300px; /* Maximum width */
+            max-height: 300px; /* Maximum height */
+            background-color: #7E52A0; /* Different color */
+            transform: translate(-50%, -50%) rotate(30deg); /* Center and rotate */
         }
 
         .right-side {
@@ -32,6 +45,7 @@
             flex-direction: column;
             align-items: center; /* Center align content */
             justify-content: center; /* Center align content vertically */
+            position: relative; /* For logo positioning */
         }
 
         h1 {
@@ -77,14 +91,22 @@
             color: #D295BF; /* Change color on hover */
         }
 
+        .logo {
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Adjust logo size as needed */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left-side">
-            <!-- Left side content -->
+            <div class="rotated-square"></div> <!-- Rotated square -->
         </div>
         <div class="right-side">
+            <img src="https://via.placeholder.com/100" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
             <h1>Gregory Pedersen</h1>
             <h2>Solutions Architect at Dell Technologies</h2>
             <div class="subheading"><a href="#">Email Inquiry</a></div>
