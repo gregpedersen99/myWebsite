@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Log</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        .left-side {
+            flex: 1; /* Take up half of the container */
+            background-color: #D295BF; /* Soft pink color */
+            position: relative; /* For positioning the square */
+        }
+
+        .rotated-square {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 30vw; /* Size of the square relative to viewport width */
+            height: 30vw; /* Size of the square relative to viewport width */
+            max-width: 300px; /* Maximum width */
+            max-height: 300px; /* Maximum height */
+            background-color: #7E52A0; /* Different color */
+            transform: translate(-50%, -50%) rotate(30deg); /* Center and rotate */
+        }
+
+        .right-side {
+            flex: 1; /* Take up the other half */
+            background-color: #29274C; /* Dark blue color */
+            color: #FFF; /* White text color for contrast */
+            padding: 40px; /* Padding for better spacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content */
+            justify-content: center; /* Center align content vertically */
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D295BF; /* Soft pink underline */
+        }
+
+        .exercise-log {
+            margin-top: 20px;
+            background: #FFF; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            color: #333;
+        }
+
+        .exercise-log label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .exercise-type {
+            display: flex; /* Layout buttons in a row */
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .exercise-type button {
+            flex: 1; /* Equal width for buttons */
+            margin: 0 5px; /* Space between buttons */
+            padding: 10px;
+            background-color: #7E52A0; /* Button color */
+            color: #FFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .exercise-type button:hover {
+            background-color: #D295BF; /* Button hover color */
+        }
+
+        .exercise-log input, .exercise-log textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .exercise-log button[type="submit"] {
+            padding: 10px 15px;
+            background-color: #7E52A0; /* Button color */
+            color: #FFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .exercise-log button[type="submit"]:hover {
+            background-color: #D295BF; /* Button hover color */
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Adjust logo size as needed */
+        }
+
+        .dynamic-fields {
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="rotated-square"></div> <!-- Rotated square -->
+        </div>
+        <div class="right-side">
+            <img src="https://via.placeholder.com/100" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <h1>Exercise Log</h1>
+            <div class="exercise-log">
+                <h2>Log Your Exercise</h2>
+                <form id="exercise-form">
+                    <label>Exercise Type:</label>
+                    <div class="exercise-type">
+                        <button type="button" onclick="selectExercise('Lift')">Lift</button>
+                        <button type="button" onclick="selectExercise('Run')">Run</button>
+                        <button type="button" onclick="selectExercise('Walk')">Walk</button>
+                    </div>
+
+                    <div id="dynamic-fields" class="dynamic-fields"></div>
+
+                    <input type="hidden" id="exercise-type" name="exercise-type">
+                    <input type="hidden" id="date" name="date">
+
+                    <button type="submit">Log Exercise</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date in the hidden input
+        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+
+        function selectExercise(type) {
+            document.getElementById('exercise-type').value = type;
+
+            // Show the relevant fields based on the selected exercise type
+            const dynamicFields = document.getElementById('dynamic-fields');
+            dynamicFields.innerHTML = ''; // Clear previous fields
+            dynamicFields.style.display = 'block'; // Show the fields
+
+            if (type === 'Lift') {
+                dynamicFields.innerHTML += `
+                    <label for="exercise">Exercise:</label>
+                    <input type="text" id="exercise" name="exercise" required>
+                    <label for="reps">Reps:</label>
+                    <input type="number" id="reps" name="reps" required>
+                    <label for="weight">Weight (lbs):</label>
+                    <input type="number" id="weight" name="weight" required>`;
+            } else if (type === 'Run') {
+                dynamicFields.innerHTML += `
+                    <label for="distance">Distance (miles):</label>
+                    <input type="number" id="distance" name="distance" required>
+                    <label for="duration">Duration (minutes):</label>
+                    <input type="number" id="duration" name="duration" required>
+                    <label for="heart-rate">Heart Rate:</label>
+                    <input type="number" id="heart-rate" name="heart-rate" required>
+                    <label for="cadence">Cadence:</label>
+                    <input type="number" id="cadence" name="cadence" required>`;
+            } else if (type === 'Walk') {
+                dynamicFields.innerHTML += `
+                    <label for="distance-walk">Distance (miles):</label>
+                    <input type="number" id="distance-walk" name="distance-walk" required>`;
+            }
+        }
+    </script>
+</body>
+</html>
